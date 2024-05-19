@@ -12,11 +12,31 @@ class ArrayProcessor {
   
       return result;
     }
+  
+    static formatArrayStrings(strings, processedNumbers) {
+      if (strings.length !== processedNumbers.length) {
+        throw new Error("Both arrays must have the same length.");
+      }
+  
+      for (let i = 0; i < strings.length; i++) {
+        if (processedNumbers[i] % 2 === 0) {
+          strings[i] = strings[i].toUpperCase();
+        } else {
+          strings[i] = strings[i].toLowerCase();
+        }
+      }
+  
+      return strings;
+    }
   }
   
   let numbers = [1, 2, 3, 4, 5];
-  let processedArray = ArrayProcessor.processArray(numbers);
+  let strings = ["Hello", "World", "JavaScript", "Coding", "Fun"];
   
-  for (let num of processedArray) {
-    console.log(num + " ");
+  let processedArray = ArrayProcessor.processArray(numbers);
+  let formattedStrings = ArrayProcessor.formatArrayStrings(strings, processedArray);
+  
+  for (let str of formattedStrings) {
+    console.log(str);
   }
+  
